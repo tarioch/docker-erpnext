@@ -1,4 +1,4 @@
-FROM frappe/erpnext-worker:v12.16.2
+FROM frappe/erpnext-worker:v13.0.0-beta.10
 
 RUN install_app erpnextswiss https://github.com/libracore/erpnextswiss.git
 RUN install_app csf_tz https://github.com/aakvatech/CSF_TZ.git
