@@ -1,4 +1,4 @@
-FROM frappe/erpnext-worker:v13.23.0
+FROM frappe/erpnext-worker:v13.23.1
 
 RUN install_app erpnextswiss https://github.com/libracore/erpnextswiss.git v13
 RUN install_app tariocherp https://github.com/tarioch/tariocherp.git
