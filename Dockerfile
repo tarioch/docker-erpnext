@@ -1,6 +1,10 @@
 FROM frappe/erpnext-worker:v13.32.0
 
-RUN install-app erpnextswiss https://github.com/libracore/erpnextswiss.git v13
-RUN install-app tariocherp https://github.com/tarioch/tariocherp.git
-#RUN install_app csf_tz https://github.com/aakvatech/CSF_TZ.git
-#RUN install_app propms https://github.com/aakvatech/PropMS.git
+USER root
+RUN apt update && apt install git && apt clean
+
+WORKDIR /home/frappe/frappe-bench/apps
+RUN git clone https://github.com/libracore/erpnextswiss.git && install-app erpnextswiss
+RUN git clone https://github.com/tarioch/tariocherp.git && install-app tariocherp
+
+USER frappe
