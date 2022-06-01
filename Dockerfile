@@ -1,7 +1,7 @@
 FROM frappe/erpnext-worker:v13.32.0
 
 USER root
-RUN apt update && apt install git && apt clean
+RUN apt update -y && apt install git && apt clean
 
 WORKDIR /home/frappe/frappe-bench/apps
 RUN git clone https://github.com/libracore/erpnextswiss.git && install-app erpnextswiss
