@@ -1,4 +1,4 @@
-FROM frappe/assets-builder:v14.5.0 as assets
+FROM frappe/assets-builder:v14.6.0 as assets
 
 RUN apt update && apt -y install git && apt clean
 
