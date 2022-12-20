@@ -6,6 +6,6 @@ WORKDIR /home/frappe/frappe-bench/apps
 #RUN git clone -b v13 https://github.com/libracore/erpnextswiss.git && install-app erpnextswiss
 RUN git clone https://github.com/tarioch/tariocherp.git && install-app tariocherp
 
-FROM frappe/erpnext-nginx:v14.2.3
+FROM frappe/erpnext-nginx:v14.11.0
 
 COPY --from=assets /out /usr/share/nginx/html
