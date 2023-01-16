@@ -13,39 +13,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
-      - name: Publish Backend Snapshot to Registry
+      - name: Publish Snapshot to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         if: "!contains(github.ref, 'refs/tags/v') && !contains(github.ref, 'refs/pull')"
         with:
-          name: tarioch/erpnext-worker
-          dockerfile: Dockerfile.backend
+          name: tarioch/erpnext
+          dockerfile: Dockerfile
           snapshot: true
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Publish Frontend Snapshot to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        if: "!contains(github.ref, 'refs/tags/v') && !contains(github.ref, 'refs/pull')"
-        with:
-          name: tarioch/erpnext-nginx
-          dockerfile: Dockerfile.frontend
-          snapshot: true
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Publish Backend Release to Registry
+      - name: Publish Release to Registry
         uses: elgohr/Publish-Docker-Github-Action@master
         if: contains(github.ref, 'refs/tags/v')
         with:
-          name: tarioch/erpnext-worker
-          dockerfile: Dockerfile.backend
-          tagging: true
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-      - name: Publish Frontend Release to Registry
-        uses: elgohr/Publish-Docker-Github-Action@master
-        if: contains(github.ref, 'refs/tags/v')
-        with:
-          name: tarioch/erpnext-nginx
-          dockerfile: Dockerfile.frontend
+          name: tarioch/erpnext
+          dockerfile: Dockerfile
           tagging: true
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
