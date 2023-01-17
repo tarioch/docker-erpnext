@@ -1,4 +1,4 @@
-FROM frappe/erpnext:v14.12.1
+FROM frappe/erpnext:v14.13.0
 
 USER root
 RUN apt update && apt -y install git && apt clean
